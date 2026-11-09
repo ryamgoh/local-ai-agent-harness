@@ -61,7 +61,8 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck 2>&1 | tee "$RUNNER_TEMP/ci-diagnostics/typecheck.log"
       - name: Tests and coverage (local providers only)
-        run: pnpm test:coverage 2>&1 | tee "$RUNNER_TEMP/ci-diagnostics/coverage.log"
+        # Real MCP/CLI subprocess tests should not oversubscribe small hosted runners.
+        run: pnpm test:coverage --maxWorkers=2 2>&1 | tee "$RUNNER_TEMP/ci-diagnostics/coverage.log"
       - name: Plugin contract tests (no provider billing)
         run: pnpm test:plugins 2>&1 | tee "$RUNNER_TEMP/ci-diagnostics/plugins.log"
       - name: Verify generated schema is committed
