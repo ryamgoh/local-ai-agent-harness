@@ -74,7 +74,8 @@ test('install adds only discovered tools, disable removes them, enable restores 
   expect(await tools()).toEqual(['notes.read', 'notes.search', 'notes.write']);
   expect((await s.call(['plugin', 'uninstall', 'notes'])).exitCode).toBe(0);
   expect(await tools()).toEqual([]);
-});
+  // The complete lifecycle starts many CLI processes; each still has a 20s timeout.
+}, 60_000);
 test('SPEC #11 composition: guard redacts what notes writes; disabled guard restores raw content', async () => {
   const s = await setup();
   await s.prepare();

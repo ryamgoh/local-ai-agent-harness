@@ -30,7 +30,28 @@ function isWithin(home: string, target: string): boolean {
 
 function captureTarget(home: string, path: string): string {
   const root = resolve(home);
-  const target = resolve(root, path);
+  let target = resolve(root, path);
+  if (isAbsolute(path) && !isWithin(root, target)) {
+    let realHome = root;
+    try {
+      realHome = realpathSync(root);
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+    }
+    const originalTarget = target;
+    // Only rebase an alias of home itself. Keep all descendants unresolved so
+    // the per-directory checks below cannot skip an escaping internal symlink.
+    for (let ancestor = dirname(target); ; ancestor = dirname(ancestor)) {
+      try {
+        if (realpathSync(ancestor) === realHome)
+          target = resolve(root, relative(ancestor, originalTarget));
+      } catch (error) {
+        if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+      }
+      // Prefer the outermost home alias, retaining any internal symlink paths.
+      if (ancestor === dirname(ancestor)) break;
+    }
+  }
   if (!isWithin(root, target)) throw new Error('Mock capture must be within HARNESS_HOME');
   mkdirSync(root, { recursive: true, mode: 0o700 });
   const realRoot = realpathSync(root);

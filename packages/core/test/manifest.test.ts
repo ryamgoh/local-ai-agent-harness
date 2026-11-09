@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, expect, test } from 'vitest';
-import { mkdtemp, mkdir, writeFile, rm, symlink } from 'node:fs/promises';
+import { mkdtemp, mkdir, writeFile, rm, symlink, realpath } from 'node:fs/promises';
 import { readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -39,7 +39,7 @@ test('minimal manifest loads with defaults', async () => {
   });
   expect(manifest.mcpServers.s?.startupTimeoutMs).toBe(10_000);
   expect(warnings).toEqual([]);
-  expect(resolvePaths().home).toBe(home);
+  expect(resolvePaths().home).toBe(await realpath(home));
 });
 
 test.each([

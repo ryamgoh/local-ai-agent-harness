@@ -3,6 +3,7 @@ import { StdioClientTransport } from '@modelcontextprotocol/client/stdio';
 import { StringDecoder } from 'node:string_decoder';
 import type { SpawnSpec, ToolResult } from './types.js';
 import { openLog, maskDiagnostic } from './log.js';
+import { getHostVersion } from '../version.js';
 export type McpTool = {
   name: string;
   description?: string;
@@ -29,7 +30,7 @@ export async function connect(
     stderr: 'pipe',
   });
   const client = new Client(
-    { name: 'harness', version: '0.1.0' },
+    { name: 'harness', version: getHostVersion() },
     {
       versionNegotiation: {
         mode: 'auto',
