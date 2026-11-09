@@ -9,6 +9,10 @@ This implements M0–M1 (Tasks 0–14) of the supplied plan. Git/npm plugin sour
 
 The repository is **private**, with **UNLICENSED/private source** distribution; it is not an open-source release. A collaborator must be invited and accept access before viewing, cloning, or downloading. Private workflow badges may require authentication or not render; use the linked Actions pages for authoritative results. See [Releases](https://github.com/ryamgoh/local-ai-agent-harness/releases), [installation](docs/INSTALL.md), [contributing](CONTRIBUTING.md), and [release maintenance](docs/RELEASING.md).
 
+## Feature status and timeline
+
+**2026-11-09 baseline:** MVP functionality is implemented (15/15 M0–M1 work packages); all 17 automated MVP criteria have evidence, while the clean macOS/Ollama manual acceptance gate remains open. The full plan has **14/29 fully closed tasks**, with partial/manual-gated work kept open rather than overclaimed. M2–M3 are planned; private release packaging and the demo shipped ahead of other M4 hardening. See [the feature timeline and checklist](ROADMAP.md) and [live GitHub milestones](https://github.com/ryamgoh/local-ai-agent-harness/milestones?state=all) for feature-by-feature status. Counts are unweighted tasks, not remaining-effort estimates; this README snapshot is maintained in PRs, not auto-refreshed on issue closure.
+
 ## Recorded demo
 
 [![Real CLI demo: an agent searches the saved offsite note](demos/v0.1.0/preview.png)](demos/v0.1.0/local-ai-agent-harness-demo.mp4)

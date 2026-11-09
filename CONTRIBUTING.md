@@ -27,6 +27,12 @@ Open a PR with the user-visible effect, test evidence, security/compatibility co
 
 Preserve the plugin-independent host: tools and policies must come from external plugins, and a fresh installation must expose zero tools. Direct and model-driven calls must share the validation/hook/approval gateway. Hook denial cannot be overridden with `--yes`; noninteractive approval must not open stdin. Refer to [ARCHITECTURE.md](docs/ARCHITECTURE.md), [PROTOCOL.md](docs/PROTOCOL.md), and [PLUGIN_GUIDE.md](docs/PLUGIN_GUIDE.md) before changing these boundaries.
 
+## Track feature completion
+
+Use [ROADMAP.md](ROADMAP.md) and the [GitHub milestones](https://github.com/ryamgoh/local-ai-agent-harness/milestones?state=all). Every approved numbered task has one issue. Feature or acceptance changes update the roadmap, its baseline/counts, and [tasks/status.md](tasks/status.md) in the same PR. Link evidence before closing the issue; a manual gate left unrun keeps the task open. Reference `Closes #N` only when the full acceptance gate is satisfied.
+
+Keep implementation PRs out of the task milestones to avoid double-counting. Native milestone counts update with issue state; the Markdown/README snapshots require an accompanying PR update. New scope changes the documented denominator. Do not assign calendar deadlines, close partial tasks, or treat package dependencies as completed features without agreement and evidence.
+
 ## Verify locally
 
 ```sh
