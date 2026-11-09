@@ -1,0 +1,193 @@
+$ uv run --with pytest --with "mcp>=2.3,<3" pytest plugins/notes/tests -q && node --test plugins/guard/test/*.test.mjs
+................................                                         [100%]
+32 passed in 1.94s
+TAP version 13
+# Subtest: redacts secrets in PreToolUse input
+ok 1 - redacts secrets in PreToolUse input
+  ---
+  duration_ms: 112.492186
+  type: 'test'
+  ...
+# Subtest: redacts a GitHub token found by secretlint
+ok 2 - redacts a GitHub token found by secretlint
+  ---
+  duration_ms: 114.602912
+  type: 'test'
+  ...
+# Subtest: a secretlint-disable comment cannot switch scanning off
+ok 3 - a secretlint-disable comment cannot switch scanning off
+  ---
+  duration_ms: 110.037399
+  type: 'test'
+  ...
+# Subtest: deny pattern exits 2 with a secret-free reason
+ok 4 - deny pattern exits 2 with a secret-free reason
+  ---
+  duration_ms: 108.29017
+  type: 'test'
+  ...
+# Subtest: destructiveHint asks when askOnDestructive
+ok 5 - destructiveHint asks when askOnDestructive
+  ---
+  duration_ms: 110.417535
+  type: 'test'
+  ...
+# Subtest: monitor mode allows but audits the original deny decision
+ok 6 - monitor mode allows but audits the original deny decision
+  ---
+  duration_ms: 106.738603
+  type: 'test'
+  ...
+# Subtest: redacts secrets in PostToolUse output
+ok 7 - redacts secrets in PostToolUse output
+  ---
+  duration_ms: 120.230657
+  type: 'test'
+  ...
+# Subtest: tool deny wins over ask and annotations without logging input or secret-bearing reasons
+ok 8 - tool deny wins over ask and annotations without logging input or secret-bearing reasons
+  ---
+  duration_ms: 121.202132
+  type: 'test'
+  ...
+# Subtest: denyPaths applies recursively, to hidden paths and Windows separators
+ok 9 - denyPaths applies recursively, to hidden paths and Windows separators
+  ---
+  duration_ms: 473.116503
+  type: 'test'
+  ...
+# Subtest: ask globs use qualified names, not the model-facing tool name
+ok 10 - ask globs use qualified names, not the model-facing tool name
+  ---
+  duration_ms: 336.650778
+  type: 'test'
+  ...
+# Subtest: askOnDestructive=false ignores annotations
+ok 11 - askOnDestructive=false ignores annotations
+  ---
+  duration_ms: 116.875693
+  type: 'test'
+  ...
+# Subtest: configured secret regexes replace repeated, nested and overlapping matches
+ok 12 - configured secret regexes replace repeated, nested and overlapping matches
+  ---
+  duration_ms: 121.555677
+  type: 'test'
+  ...
+# Subtest: zero-width regexes terminate and do not erase harmless values
+ok 13 - zero-width regexes terminate and do not erase harmless values
+  ---
+  duration_ms: 123.63827
+  type: 'test'
+  ...
+# Subtest: unvalidated secretlint ranges redact the whole value
+ok 14 - unvalidated secretlint ranges redact the whole value
+  ---
+  duration_ms: 131.143836
+  type: 'test'
+  ...
+# Subtest: redact=false does not modify values but still keeps audit content-free
+ok 15 - redact=false does not modify values but still keeps audit content-free
+  ---
+  duration_ms: 113.602361
+  type: 'test'
+  ...
+# Subtest: PostToolUse redacts error results and structuredContent while preserving shape
+ok 16 - PostToolUse redacts error results and structuredContent while preserving shape
+  ---
+  duration_ms: 128.058857
+  type: 'test'
+  ...
+# Subtest: monitor records ask and detections without enforcing or rewriting
+ok 17 - monitor records ask and detections without enforcing or rewriting
+  ---
+  duration_ms: 108.659381
+  type: 'test'
+  ...
+# Subtest: invalid regex configuration fails closed without leaking regex or content and is audited
+ok 18 - invalid regex configuration fails closed without leaking regex or content and is audited
+  ---
+  duration_ms: 88.121896
+  type: 'test'
+  ...
+# Subtest: monitor always allows even when a configured regex is invalid, auditing original denial
+ok 19 - monitor always allows even when a configured regex is invalid, auditing original denial
+  ---
+  duration_ms: 85.500543
+  type: 'test'
+  ...
+# Subtest: own configuration never appears in hook output or audit
+ok 20 - own configuration never appears in hook output or audit
+  ---
+  duration_ms: 111.583156
+  type: 'test'
+  ...
+# Subtest: secrets in session metadata are redacted even with redact=false
+ok 21 - secrets in session metadata are redacted even with redact=false
+  ---
+  duration_ms: 115.389203
+  type: 'test'
+  ...
+# Subtest: secret-bearing object keys are redacted without prototype mutation
+ok 22 - secret-bearing object keys are redacted without prototype mutation
+  ---
+  duration_ms: 117.174402
+  type: 'test'
+  ...
+# Subtest: standalone bundle runs outside the workspace without node_modules
+ok 23 - standalone bundle runs outside the workspace without node_modules
+  ---
+  duration_ms: 112.356339
+  type: 'test'
+  ...
+# Subtest: symlinks cannot disguise denied path targets
+ok 24 - symlinks cannot disguise denied path targets
+  ---
+  duration_ms: 122.108348
+  type: 'test'
+  ...
+# Subtest: benign additive annotations alone do not ask
+ok 25 - benign additive annotations alone do not ask
+  ---
+  duration_ms: 111.10084
+  type: 'test'
+  ...
+# Subtest: AWS default pattern redacts known example credentials
+ok 26 - AWS default pattern redacts known example credentials
+  ---
+  duration_ms: 112.528675
+  type: 'test'
+  ...
+# Subtest: invalid regex on PostToolUse replaces the result with a safe error
+ok 27 - invalid regex on PostToolUse replaces the result with a safe error
+  ---
+  duration_ms: 92.343698
+  type: 'test'
+  ...
+# Subtest: monitor PostToolUse leaves outputs untouched but audits detections
+ok 28 - monitor PostToolUse leaves outputs untouched but audits detections
+  ---
+  duration_ms: 123.508657
+  type: 'test'
+  ...
+# Subtest: audit symlinks fail closed without writing to their targets
+ok 29 - audit symlinks fail closed without writing to their targets
+  ---
+  duration_ms: 112.652402
+  type: 'test'
+  ...
+# Subtest: audit appends and tightens existing file permissions
+ok 30 - audit appends and tightens existing file permissions
+  ---
+  duration_ms: 112.263791
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4110.942528

@@ -1,0 +1,17 @@
+{
+  "name": "@harness/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "harness": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@harness/core": "workspace:*",
+    "commander": "^15.0.0",
+    "@inquirer/prompts": "^8.7.0",
+    "cli-table3": "^0.6.5"
+  }
+}

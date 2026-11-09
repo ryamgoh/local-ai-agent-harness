@@ -1,0 +1,13 @@
+{
+  "provider": "OpenRouter",
+  "model": "openai/gpt-4.1-mini",
+  "tools": [
+    "notes.write",
+    "notes.search"
+  ],
+  "noteRedacted": true,
+  "finalAnswer": "I appended \"rotate key sk-abcdef123456\" to live.md. The search for \"rotate key\" found this content stored in live.md on line 1 (with the key redacted for safety): \n\nrotate key [REDACTED]",
+  "steps": 2,
+  "testedAt": "2026-11-09T02:14:30.887Z",
+  "credentialStored": false
+}

@@ -1,0 +1,3 @@
+$ pnpm --filter guard build && node scripts/build-fixtures.mjs && tsc -b
+$ node build.mjs
+Built dist/guard.mjs (258866 bytes)

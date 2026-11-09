@@ -1,0 +1,12 @@
+node_modules/
+packages/*/dist/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+coverage/
+__pycache__/
+.pytest_cache/
+.venv/
+*.secrets.json
+.harness/

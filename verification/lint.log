@@ -1,0 +1,3 @@
+$ eslint packages test scripts --max-warnings 0 && prettier --check packages test scripts schema README.md
+Checking formatting...
+All matched files use Prettier code style!

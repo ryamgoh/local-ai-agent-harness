@@ -1,0 +1,6 @@
+{
+  "steps": [
+    { "tool": "mcp__echo__echo", "input": { "text": 42 } },
+    { "text": "The invalid request was rejected; continuing safely." }
+  ]
+}

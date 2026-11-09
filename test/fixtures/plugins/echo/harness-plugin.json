@@ -1,0 +1,12 @@
+{
+  "apiVersion": 1,
+  "name": "echo",
+  "version": "1.0.0",
+  "description": "Echo fixture",
+  "mcpServers": {
+    "main": {
+      "command": "node",
+      "args": ["${plugin.root}/server.mjs"]
+    }
+  }
+}

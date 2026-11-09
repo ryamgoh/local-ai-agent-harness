@@ -1,0 +1,7 @@
+node_modules
+dist
+**/dist
+coverage
+*.py
+test/fixtures/plugins/echo/server.mjs
+test/fixtures/plugins/echo/crash.mjs

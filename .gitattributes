@@ -1,0 +1,4 @@
+plugins/guard/dist/guard.mjs -whitespace linguist-generated=true
+test/fixtures/plugins/echo/server.mjs -whitespace linguist-generated=true
+test/fixtures/plugins/echo/crash.mjs -whitespace linguist-generated=true
+verification/*.log -whitespace

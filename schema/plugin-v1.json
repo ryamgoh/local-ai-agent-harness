@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "apiVersion": { "type": "number", "const": 1 },
+    "name": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 40,
+      "pattern": "^[a-z][a-z0-9-]*[a-z0-9]$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[A-Za-z-][0-9A-Za-z-]*))*))?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "description": { "type": "string" },
+    "author": {
+      "anyOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "email": { "type": "string" },
+            "url": { "type": "string" }
+          },
+          "required": ["name"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "license": { "type": "string" },
+    "homepage": { "type": "string" },
+    "repository": {
+      "anyOf": [
+        { "type": "string" },
+        {
+          "type": "object",
+          "properties": { "type": { "type": "string" }, "url": { "type": "string" } },
+          "required": ["type", "url"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "keywords": { "type": "array", "items": { "type": "string" } },
+    "config": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "const": "object" },
+        "properties": {
+          "type": "object",
+          "propertyNames": { "type": "string" },
+          "additionalProperties": {
+            "type": "object",
+            "propertyNames": { "type": "string" },
+            "additionalProperties": {}
+          }
+        }
+      },
+      "required": ["type", "properties"],
+      "additionalProperties": {}
+    },
+    "permissions": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "filesystem": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": { "type": "string", "minLength": 1 },
+              "access": { "type": "string", "enum": ["read", "read-write"] }
+            },
+            "required": ["path", "access"],
+            "additionalProperties": false
+          }
+        },
+        "network": {
+          "anyOf": [
+            { "type": "boolean" },
+            { "type": "array", "items": { "type": "string", "minLength": 1 } }
+          ]
+        },
+        "env": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" }
+        },
+        "exec": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "mcpServers": {
+      "default": {},
+      "type": "object",
+      "propertyNames": { "type": "string", "minLength": 1 },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "command": { "type": "string", "minLength": 1 },
+          "args": { "default": [], "type": "array", "items": { "type": "string" } },
+          "env": {
+            "default": {},
+            "type": "object",
+            "propertyNames": { "type": "string" },
+            "additionalProperties": { "type": "string" }
+          },
+          "cwd": { "type": "string" },
+          "startupTimeoutMs": {
+            "default": 10000,
+            "type": "integer",
+            "exclusiveMinimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": ["command"],
+        "additionalProperties": false
+      }
+    },
+    "hooks": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "event": {
+            "type": "string",
+            "enum": ["PreToolUse", "PostToolUse", "SessionStart", "UserPromptSubmit", "SessionEnd"]
+          },
+          "match": { "default": "**", "type": "string" },
+          "command": { "type": "string", "minLength": 1 },
+          "args": { "default": [], "type": "array", "items": { "type": "string" } },
+          "timeout": { "default": 5, "type": "number", "exclusiveMinimum": 0, "maximum": 60 },
+          "onError": { "type": "string", "enum": ["allow", "deny"] }
+        },
+        "required": ["event", "command"],
+        "additionalProperties": false
+      }
+    },
+    "commands": {
+      "default": {},
+      "type": "object",
+      "propertyNames": { "type": "string", "minLength": 1 },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "file": { "type": "string", "minLength": 1 },
+          "description": { "type": "string" }
+        },
+        "required": ["file"],
+        "additionalProperties": false
+      }
+    },
+    "priority": {
+      "default": 100,
+      "type": "integer",
+      "minimum": -9007199254740991,
+      "maximum": 9007199254740991
+    }
+  },
+  "required": ["apiVersion", "name", "version"],
+  "additionalProperties": {}
+}

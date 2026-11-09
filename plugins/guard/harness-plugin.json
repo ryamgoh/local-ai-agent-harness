@@ -1,0 +1,29 @@
+{
+  "$schema": "https://harness.dev/schema/plugin-v1.json",
+  "apiVersion": 1,
+  "name": "guard",
+  "version": "0.1.0",
+  "description": "Policy for any plugin's tools: deny, ask, redact secrets, keep an audit log.",
+  "license": "MIT",
+  "priority": 10,
+  "config": {
+    "type": "object",
+    "properties": {
+      "mode": { "type": "string", "enum": ["enforce", "monitor"], "default": "enforce" },
+      "deny": { "type": "array", "items": { "type": "string" }, "default": [] },
+      "ask": { "type": "array", "items": { "type": "string" }, "default": ["*.delete"] },
+      "askOnDestructive": { "type": "boolean", "default": true },
+      "redact": { "type": "boolean", "default": true },
+      "denyPaths": { "type": "array", "items": { "type": "string" }, "default": ["**/.env", "**/*.pem"] },
+      "secretPatterns": { "type": "array", "items": { "type": "string" }, "default": ["sk-[A-Za-z0-9_-]{8,}", "AKIA[0-9A-Z]{16}"] }
+    }
+  },
+  "permissions": {
+    "filesystem": [{ "path": "${plugin.data}", "access": "read-write" }],
+    "network": false
+  },
+  "hooks": [
+    { "event": "PreToolUse", "match": "**", "command": "node", "args": ["${plugin.root}/dist/guard.mjs"], "timeout": 3, "onError": "deny" },
+    { "event": "PostToolUse", "match": "**", "command": "node", "args": ["${plugin.root}/dist/guard.mjs"], "timeout": 3, "onError": "allow" }
+  ]
+}
