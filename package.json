@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@modelcontextprotocol/server": "^2.4.0",
-    "@types/node": "^22.0.0",
+    "@types/node": "^26.6.6",
     "@types/picomatch": "^4.0.0",
     "@types/proper-lockfile": "^4.1.0",
     "@types/semver": "^7.0.0",
