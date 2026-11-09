@@ -1,5 +1,15 @@
 import { afterEach, beforeEach, expect, test } from 'vitest';
-import { mkdtemp, mkdir, writeFile, readFile, rm, lstat, symlink, readdir } from 'node:fs/promises';
+import {
+  mkdtemp,
+  mkdir,
+  writeFile,
+  readFile,
+  rm,
+  lstat,
+  symlink,
+  readdir,
+  realpath,
+} from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -29,7 +39,7 @@ afterEach(async () => {
 
 test('install copies and registers an enabled plugin with integrity hashes', async () => {
   const plan = await store.plan(source);
-  expect(plan.commands[0]).toEqual(['node', join(source, 'server.mjs')]);
+  expect(plan.commands[0]).toEqual(['node', join(await realpath(source), 'server.mjs')]);
   const entry = await store.install(plan);
   expect(entry).toMatchObject({
     name: 'sample',
@@ -59,7 +69,7 @@ test('same-name install fails unless force, and force leaves one entry', async (
 test('link install creates a symlink, and uninstall never alters the source', async () => {
   const entry = await store.install(await store.plan(source), { link: true });
   expect((await lstat(entry.installPath)).isSymbolicLink()).toBe(true);
-  expect((await store.load('sample')).dir).toBe(source);
+  expect((await store.load('sample')).dir).toBe(await realpath(source));
   await store.uninstall('sample');
   expect(await store.get('sample')).toBeUndefined();
   expect(await readFile(join(source, 'server.mjs'), 'utf8')).toBe('original');
@@ -175,7 +185,7 @@ test('plan leaves config values verbatim for pre-install consent', async () => {
   );
   expect((await store.plan(source)).commands[0]).toEqual([
     'node',
-    join(source, 'server.mjs'),
+    join(await realpath(source), 'server.mjs'),
     '${config.folder}',
   ]);
 });
