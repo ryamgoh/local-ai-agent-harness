@@ -2,7 +2,7 @@
 import { Command, CommanderError, InvalidArgumentError } from 'commander';
 import { realpathSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { Host } from '@harness/core';
+import { Host, getHostVersion } from '@harness/core';
 import { CliError, type CommandContext } from './context.js';
 import {
   installPlugin,
@@ -29,7 +29,7 @@ export function createProgram(context: CommandContext): Command {
   program
     .name('harness')
     .description('Local agent harness with plugin-provided capabilities')
-    .version('0.1.0')
+    .version(getHostVersion())
     .exitOverride()
     .configureOutput({
       writeOut: (text) => process.stdout.write(text),

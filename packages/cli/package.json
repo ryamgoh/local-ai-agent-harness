@@ -1,6 +1,8 @@
 {
   "name": "@harness/cli",
   "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
   "type": "module",
   "bin": {
     "harness": "./dist/index.js"

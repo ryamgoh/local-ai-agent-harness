@@ -2,6 +2,12 @@
   "name": "local-ai-agent-harness",
   "version": "0.1.0",
   "private": true,
+  "license": "UNLICENSED",
+  "description": "Local AI agent harness with external MCP tool and command-hook plugins",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryamgoh/local-ai-agent-harness.git"
+  },
   "type": "module",
   "packageManager": "pnpm@11.25.0",
   "engines": {
@@ -14,6 +20,11 @@
     "test:e2e": "vitest run test/e2e",
     "test:coverage": "vitest run --coverage",
     "test:plugins": "uv run --with pytest --with \"mcp>=2.3,<3\" pytest plugins/notes/tests -q && node --test plugins/guard/test/*.test.mjs",
+    "test:version": "node --test test/release-version.test.mjs",
+    "build:release": "node scripts/build-release.mjs",
+    "test:release": "node scripts/smoke-release.mjs",
+    "version:check": "node scripts/check-version.mjs",
+    "version:set": "node scripts/version.mjs",
     "lint": "eslint packages test scripts --max-warnings 0 && prettier --check packages test scripts schema README.md",
     "format": "prettier --write packages test scripts schema README.md",
     "schema": "tsx scripts/gen-schema.ts",

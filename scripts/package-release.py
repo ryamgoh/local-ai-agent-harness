@@ -7,8 +7,8 @@ import zipfile
 
 root = Path(__file__).resolve().parents[1]
 output = Path(sys.argv[1]) if len(sys.argv) > 1 else root.parent / 'local-ai-agent-harness-mvp.zip'
-excluded = {'node_modules', '.git', 'coverage', '.venv', '__pycache__', '.pytest_cache', '.harness'}
-credentials = [value.encode() for name in ('OPENROUTER_API_KEY', 'OPENAI_API_KEY') if (value := os.environ.get(name))]
+excluded = {'node_modules', '.git', 'coverage', '.venv', '__pycache__', '.pytest_cache', '.harness', 'release'}
+credentials = [value.encode() for name in ('OPENROUTER_API_KEY', 'OPENAI_API_KEY', 'GH_TOKEN', 'GITHUB_TOKEN') if (value := os.environ.get(name))]
 files = []
 for path in sorted(root.rglob('*')):
     relative = path.relative_to(root)

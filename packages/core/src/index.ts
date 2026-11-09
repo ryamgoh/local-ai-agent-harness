@@ -1,5 +1,6 @@
 export { Host } from './host.js';
 export type { PluginInspection } from './host.js';
+export { getHostVersion } from './version.js';
 export { resolvePaths } from './paths.js';
 export type { HarnessPaths } from './paths.js';
 export * from './errors.js';
