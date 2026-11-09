@@ -9,9 +9,15 @@ This implements M0–M1 (Tasks 0–14) of the supplied plan. Git/npm plugin sour
 
 The repository is **private**, with **UNLICENSED/private source** distribution; it is not an open-source release. A collaborator must be invited and accept access before viewing, cloning, or downloading. Private workflow badges may require authentication or not render; use the linked Actions pages for authoritative results. See [Releases](https://github.com/ryamgoh/local-ai-agent-harness/releases), [installation](docs/INSTALL.md), [contributing](CONTRIBUTING.md), and [release maintenance](docs/RELEASING.md).
 
+## Recorded demo
+
+[![Real CLI demo: an agent searches the saved offsite note](demos/v0.1.0/preview.png)](demos/v0.1.0/local-ai-agent-harness-demo.mp4)
+
+[Watch or download the 1080p MP4](https://github.com/ryamgoh/local-ai-agent-harness/releases/download/v0.1.0/local-ai-agent-harness-demo.mp4), or open the [demo and replay guide](demos/v0.1.0/README.md). The silent, chaptered recording runs just over two minutes and uses the actual published `v0.1.0` package. It shows Python MCP tool discovery, Node guard redaction and denial, a **live OpenRouter agent run**, and disabling/restoring plugin tools. Commands and results are real; typing is scripted for readability. Credentials are not recorded. Ollama inference is not demonstrated.
+
 ## Install a versioned release
 
-Use macOS or Linux with Node.js **22.22.2 or newer** (**Node 24 recommended**), npm, and GitHub CLI (`gh`). The initial release target is **v0.1.0**; check [its release page](https://github.com/ryamgoh/local-ai-agent-harness/releases/tag/v0.1.0) for availability. These instructions do not claim that a remote release or CI run has completed.
+Use macOS or Linux with Node.js **22.22.2 or newer** (**Node 24 recommended**), npm, and GitHub CLI (`gh`). **v0.1.0 is published** on [GitHub Releases](https://github.com/ryamgoh/local-ai-agent-harness/releases/tag/v0.1.0), after passing the [Linux/macOS quality and installed-package gates](https://github.com/ryamgoh/local-ai-agent-harness/actions/runs/42553691504).
 
 Run the following **on your own machine**, authenticated as an invited collaborator:
 
