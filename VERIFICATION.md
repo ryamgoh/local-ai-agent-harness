@@ -2,6 +2,8 @@
 
 **Verified on 2026-11-09 in the Linux Manus sandbox.** The implementation is in `/home/ubuntu/harness`; the supplied planning documents remain in `/home/ubuntu/harness-plan` and their specification/companion documents are also included in this checkout.
 
+**Historical implementation snapshot:** the results below precede the private GitHub repository, gated v0.1.0 release and recorded demo. The original observations are preserved; statements about no repository push or unexecuted remote CI describe that earlier verification stage, not current repository status. See [ROADMAP.md](ROADMAP.md), [tasks/status.md](tasks/status.md) and [GitHub Actions](https://github.com/ryamgoh/local-ai-agent-harness/actions) for subsequent delivery and live evidence.
+
 ## Results
 
 | Gate                                                 | Observed result                                                         | Saved evidence                                                  |

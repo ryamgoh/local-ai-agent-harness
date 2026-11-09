@@ -2,6 +2,8 @@
 
 The authoritative task descriptions remain in [plan.md](plan.md). This checklist records the delivered M0–M1 slice, without marking M2–M4 as implemented.
 
+**Updated 2026-11-09.** The [feature timeline](../ROADMAP.md) separates implementation from acceptance and links every numbered task to its GitHub issue. All 15 M0–M1 implementation packages are delivered; Task 14 remains open for the clean macOS/Ollama manual acceptance gate. GitHub milestones provide live completion, while this document is a maintained snapshot.
+
 | Task | Delivered implementation                                                                                                        | Evidence                                                |
 | ---- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | 0    | Strict ESM pnpm workspace, echo MCP fixture, Linux/macOS Node 22/24 CI matrix                                                   | Build, runtime tests, workflow configuration            |
@@ -26,6 +28,8 @@ The six core architectural proofs are automated: zero tools with an empty home; 
 
 **SPEC #20 / Task 14 manual demo:** a clean **macOS** machine running **Ollama** was not available in this Linux sandbox. Ollama-compatible requests are tested with stubbed HTTP; the same compatible adapter was additionally exercised against live OpenRouter with both plugins. This does not substitute for claiming the macOS/Ollama acceptance demo has run.
 
-The remote GitHub Actions matrix is configured, not remotely executed in this task. Windows smoke, OS sandboxing, git/npm sources, updates, scaffolding/conformance CLI, slash commands, session hooks, keychain, UI, and npm publication remain M2–M4 work. No external repository was pushed or package published.
+The private repository and **v0.1.0 GitHub Release are published**. The [remote Linux/macOS Node 22/24 release quality and installed-package gates passed](https://github.com/ryamgoh/local-ai-agent-harness/actions/runs/42553691504), and the [real recording/replay guide](../demos/v0.1.0/README.md) is available. This records release/CI/demo work delivered after the initial local MVP verification snapshot.
+
+Windows smoke, OS sandboxing, git/npm plugin sources, updates, scaffolding/conformance CLI, plugin slash commands, session hooks, OS keychain and the local web UI remain planned. Private installable packaging and recording are partial early delivery of Task 28, not completion of all M4 work. Public npm registry publication is deferred under the private GitHub-only distribution decision; it is not an automatically authorized future release step.
 
 See [the verification report](../VERIFICATION.md) and `verification/` for the exact local commands and observed results. Implementation adjustments that preserve the contract are described in [implementation notes](../docs/IMPLEMENTATION-NOTES.md).

@@ -17,3 +17,4 @@
 
 - [ ] No credentials, private state, or `node_modules` are included in source archives.
 - [ ] Any version/changelog changes are consistent; published tags and assets are not rewritten.
+- [ ] If feature/acceptance status changed: update `ROADMAP.md` and `tasks/status.md`, link the task issue and evidence, and keep unrun manual gates open.
