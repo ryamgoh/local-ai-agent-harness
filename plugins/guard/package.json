@@ -13,5 +13,5 @@
     "@secretlint/secretlint-rule-preset-recommend": "^13.0.0",
     "picomatch": "^4.0.0"
   },
-  "devDependencies": { "esbuild": "^0.27.0" }
+  "devDependencies": { "esbuild": "^0.28.2" }
 }
